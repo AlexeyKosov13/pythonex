@@ -9,13 +9,14 @@ required: true
 type: choice
 default: all
 options:
--all
+ - all
+
 
 jobs: 
 run-tests:
 runs-on: ubuntu-latest
 name: Tests
-steps: 
+ steps: 
  - name: copy code
  uses: actions/checkout@v4
  - name: set up python
