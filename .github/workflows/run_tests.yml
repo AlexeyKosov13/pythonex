@@ -1,1 +1,27 @@
+name: run autotests
 
+on: 
+worflow_dispatch:
+inputs:
+deplyement_target:
+description: select tests to run
+required: true
+type: choice
+default: all
+options:
+-all
+
+jobs: 
+run-tests:
+runs-on: ubuntu-latest
+name: Tests
+steps: 
+ - name: copy code
+ uses: actions/checkout@v4
+ - name: set up python
+ uses: actions/setup-python@v5
+ with: python-version "3.13"
+ - name: install depend
+ run: pip install -r requirements.txt
+ - name: run test
+ run: pytest -v
